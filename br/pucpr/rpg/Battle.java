@@ -16,6 +16,7 @@ public class Battle {
 
         System.out.println(hero.getName() + " versus " + monster.getName());
 
+
         //BATALHA ATE A MORTE
         //QUEREMOS SANGUE!!!!
         while (hero.isAlive() && monster.isAlive()) {
@@ -24,13 +25,13 @@ public class Battle {
                 monster.attack(hero);
                 System.out.println();
             } else if (monster.isWeak() && monster.hasPotion()){
-                hero.attack(monster);
+                hero.heroAttack(monster);
                 if (monster.isAlive()) {
                     monster.sip();
                 }
                 System.out.println();
             } else {
-                hero.attack(monster);
+                hero.heroAttack(monster);
                 if (monster.isAlive()) {
                     monster.attack(hero);
                 }

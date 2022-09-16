@@ -1,6 +1,7 @@
 package br.pucpr.rpg.items;
 
 import br.pucpr.rpg.system.DiceRoll;
+import br.pucpr.rpg.system.FixedRoll;
 
 public class Weapon {
     public static final Weapon FISTS =
@@ -19,6 +20,7 @@ public class Weapon {
         this.name = name;
         this.damage = damage;
     }
+
 
     public String getName() {
         return name;
