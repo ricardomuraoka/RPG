@@ -103,33 +103,6 @@ public class Char {
         System.out.printf("%s drinks %s and heals %d%n", name, potionName, sip);
     }
 
-    public void heroAttack(Char enemy){
-        if (enemy == null) {
-            throw new IllegalArgumentException("You must provide an enemy!");
-        }
-        if (getLife() <= 0) {
-            throw new IllegalStateException("Cannot attack while dead.");
-        }
-
-        String weaponName = weapon.getName();
-
-        System.out.printf("%s attacks %s with %s: ", name, enemy.name, weaponName);
-
-
-        int[] roll = FixedRoll.getInstance();
-
-
-        int goal = skill - enemy.defense;
-        int i = 0;
-        if (roll[i] <= goal) {
-            System.out.println("HIT!");
-            enemy.takeDamage(roll[i]);
-        } else {
-            System.out.println("MISS!");
-        }
-        i++;
-    }
-
 
 
     public void attack(Char enemy) {
@@ -154,6 +127,7 @@ public class Char {
             System.out.println("MISS!");
         }
     }
+
     public void takeDamage(int damage) {
         if (damage < 0) damage = 0;
         life = life - damage;

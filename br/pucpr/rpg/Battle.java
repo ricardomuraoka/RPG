@@ -4,12 +4,13 @@ import br.pucpr.rpg.items.Potion;
 import br.pucpr.rpg.items.Weapon;
 import br.pucpr.rpg.system.Char;
 import br.pucpr.rpg.system.DiceRoll;
+import br.pucpr.rpg.system.FixedRoll;
 
 public class Battle {
     public static void main(String[] args) {
         Char hero = new Char("Sir Gallahad",
                 14, 5, 80);
-        hero.setWeapon(new Weapon("Excalibur", new DiceRoll(1, 6, 3)));
+        hero.setWeapon(new Weapon("Excalibur", new FixedRoll()));
 
         Char monster = Char.createGoblin();
         monster.setPotion(new Potion("Small potion", 10));
@@ -25,13 +26,13 @@ public class Battle {
                 monster.attack(hero);
                 System.out.println();
             } else if (monster.isWeak() && monster.hasPotion()){
-                hero.heroAttack(monster);
+                hero.attack(monster);
                 if (monster.isAlive()) {
                     monster.sip();
                 }
                 System.out.println();
             } else {
-                hero.heroAttack(monster);
+                hero.attack(monster);
                 if (monster.isAlive()) {
                     monster.attack(hero);
                 }
