@@ -79,7 +79,8 @@ public class Party {
         List<Char> party = getMembers();
         for (Char c: party) {
             if (c.isAlive()) {
-                System.out.printf("Congratulations " + c.getName() + " for surviving this Battle!\n");
+                System.out.printf("Congratulations " + c.getName() + " for surviving this Battle with "
+                + c.getLife() + " life points!");
             }
         }
     }
