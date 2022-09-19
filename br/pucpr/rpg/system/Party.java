@@ -27,20 +27,12 @@ public class Party{
         }
 
         List<Map.Entry<Char, Integer>> list = new LinkedList<>(initParties.entrySet());
-        Collections.sort(list, new Comparator<Map.Entry<Char, Integer>>() {
-
-            @Override
-            public int compare(Map.Entry<Char, Integer> o1, Map.Entry<Char, Integer> o2) {
-                return (o2.getValue()).compareTo(o1.getValue());
-            }
-        });
+        list.sort((o1, o2) -> (o2.getValue()).compareTo(o1.getValue()));
 
         Map<Char, Integer> result = new LinkedHashMap<>();
         for (Map.Entry<Char, Integer> entry : list) {
             result.put(entry.getKey(), entry.getValue());
         }
-        result =  (LinkedHashMap<Char, Integer>) result;
-
 
 
         //  Get all entries using the entrySet() method
@@ -52,7 +44,7 @@ public class Party{
             Char randomElement;
             Char isAttacking = entry.getKey();
             int initiative = entry.getValue();
-            if (party1.contains(entry.getValue())) {
+            if (party1.contains(entry.getKey())) {
                 randomElement = p2.getMembers().get(rand.nextInt(p2.getMembers().size()));
             } else {
                 randomElement = p1.getMembers().get(rand.nextInt(p1.getMembers().size()));
