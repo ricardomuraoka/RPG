@@ -26,13 +26,18 @@ public class Party {
             initParties.put(initiative, c);
         }
 
-        //  Get all entries using the entrySet() method
-        Set<Map.Entry<Integer, Char>> entries = initParties.entrySet();
+        var initSorted =  initParties.descendingMap();
 
-        for (Map.Entry<Integer, Char> entry : entries) {
+
+        //  Get all entries using the entrySet() method
+        var entries = initSorted.entrySet();
+
+
+        for (var entry : entries) {
             Random rand = new Random();
             Char randomElement;
             Char isAttacking = entry.getValue();
+            int initiative = entry.getKey();
             if (party1.contains(entry.getValue())) {
                 randomElement = p2.getMembers().get(rand.nextInt(p2.getMembers().size()));
             } else {
@@ -40,9 +45,12 @@ public class Party {
             }
             if (isAttacking.isAlive() && randomElement.isAlive()) {
                 if (isAttacking.isWeak() && isAttacking.hasPotion()) {
+                    System.out.println();
+                    System.out.println(isAttacking.getName() + " got the initiative with " + initiative + " points");
                     isAttacking.sip();
                     System.out.println();
                 } else {
+                    System.out.println(isAttacking.getName() + " got the initiative with " + initiative + " points");
                     isAttacking.attack(randomElement);
                 }
                 System.out.println();
