@@ -80,7 +80,7 @@ public class Party {
         for (Char c: party) {
             if (c.isAlive()) {
                 System.out.printf("Congratulations " + c.getName() + " for surviving this Battle with "
-                + c.getLife() + " life points!");
+                + c.getLife() + " life points!\n");
             }
         }
     }
