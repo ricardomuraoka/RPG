@@ -3,7 +3,7 @@ package br.pucpr.rpg.system;
 import java.util.*;
 
 public class Party {
-    List<Char> members = new ArrayList<>();
+    List<Char> members;
     private String partyName;
 
     public Party(String partyName, List<Char> members) {
@@ -25,61 +25,46 @@ public class Party {
             int initiative = new DiceRoll(1, 20).roll();
             initParties.put(initiative, c);
         }
-        NavigableSet<Integer> initSorted = initParties.descendingKeySet();
 
         //  Get all entries using the entrySet() method
         Set<Map.Entry<Integer, Char>> entries = initParties.entrySet();
 
         for (Map.Entry<Integer, Char> entry : entries) {
             Random rand = new Random();
+            Char randomElement;
+            Char isAttacking = entry.getValue();
             if (party1.contains(entry.getValue())) {
-                Char randomElement = p2.getMembers().get(rand.nextInt(p2.getMembers().size()));
-                Char isAttacking = entry.getValue();
-                if (isAttacking.isAlive() && randomElement.isAlive()) {
-                    if (isAttacking.isWeak() && isAttacking.hasPotion()) {
-                        isAttacking.sip();
-                        System.out.println();
-                    } else {
-                        isAttacking.attack(randomElement);
-                    }
-                    System.out.println();
-                }
+                randomElement = p2.getMembers().get(rand.nextInt(p2.getMembers().size()));
             } else {
-                Char randomElement = p1.getMembers().get(rand.nextInt(p1.getMembers().size()));
-                Char isAttacking = entry.getValue();
-                if (isAttacking.isAlive() && randomElement.isAlive()) {
-                    if (isAttacking.isWeak() && isAttacking.hasPotion()) {
-                        isAttacking.sip();
-                        System.out.println();
-                    } else {
-                        isAttacking.attack(randomElement);
-                    }
+                randomElement = p1.getMembers().get(rand.nextInt(p1.getMembers().size()));
+            }
+            if (isAttacking.isAlive() && randomElement.isAlive()) {
+                if (isAttacking.isWeak() && isAttacking.hasPotion()) {
+                    isAttacking.sip();
                     System.out.println();
+                } else {
+                    isAttacking.attack(randomElement);
                 }
+                System.out.println();
             }
         }
     }
     public boolean partyIsAlive() {
         List<Char> party = getMembers();
         int i = 0;
-        boolean isAlive = false;
         for (Char c: party) {
             if (c.isAlive()) {
                 i++;
             }
         }
-        if (i > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return i > 0;
     }
 
     public void survivors() {
         List<Char> party = getMembers();
         for (Char c: party) {
             if (c.isAlive()) {
-                System.out.printf("Congratulations " + c.getName() + " for surviving this Battle with "
+                System.out.print("Congratulations " + c.getName() + " for surviving this Battle with "
                 + c.getLife() + " life points!\n");
             }
         }
