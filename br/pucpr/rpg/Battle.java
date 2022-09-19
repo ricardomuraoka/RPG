@@ -38,5 +38,6 @@ public class Battle {
         Party winner = heroParty.partyIsAlive() ? heroParty : monsterParty;
         System.out.printf("%s wins! %n",
                 winner.getPartyName());
+        winner.survivors();
     }
 }

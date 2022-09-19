@@ -75,6 +75,15 @@ public class Party {
         }
     }
 
+    public void survivors() {
+        List<Char> party = getMembers();
+        for (Char c: party) {
+            if (c.isAlive()) {
+                System.out.printf("Congratulations " + c.getName() + " for surviving this Battle!\n");
+            }
+        }
+    }
+
 
 
     public void addMember(Char c) {
