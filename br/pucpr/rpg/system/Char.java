@@ -49,7 +49,7 @@ public class Char {
         String name =
                 DiceRoll.roll("Spitz", "Gob", "Uga", "Dandar") + " " +
                         DiceRoll.roll("the weak", "Baggins", "the ugly", "son of Arathorn");
-        int skill = new DiceRoll(1, 10, 5).roll();
+        int skill = new DiceRoll(1, 10, 8).roll();
         int defense = new DiceRoll(1, 8, 3).roll();
         int life = new DiceRoll(2, 10, 30).roll();
 
@@ -59,7 +59,7 @@ public class Char {
     public static Char createHero() {
         String name =
                 "Sir " +DiceRoll.roll("Azreal", "Ascamore", "Lancelot", "Tristan");
-        int skill = new DiceRoll(1, 10, 5).roll();
+        int skill = new DiceRoll(1, 10, 7).roll();
         int defense = new DiceRoll(1, 8, 3).roll();
         int life = new DiceRoll(2, 10, 50).roll();
 
