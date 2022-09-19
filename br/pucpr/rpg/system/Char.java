@@ -3,12 +3,18 @@ package br.pucpr.rpg.system;
 import br.pucpr.rpg.items.Potion;
 import br.pucpr.rpg.items.Weapon;
 
-public class Char {
+public class Char implements Comparable{
     private String name;
     private int skill;
     private int defense;
     private int life;
     private int maxLife;
+
+    public int getInitiative() {
+        return initiative;
+    }
+
+    private int initiative;
 
     private Weapon weapon = Weapon.FISTS;
 
@@ -188,6 +194,20 @@ public class Char {
 
     public void setPotion(Potion potion) {
         this.potion = potion;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Char other = (Char) o;
+
+        int CharComparison =
+                this.name.compareTo(other.name);
+
+        if(CharComparison != 0) {
+            return CharComparison;
+        }
+
+        return this.name.compareTo(other.getName());
     }
 
 }
