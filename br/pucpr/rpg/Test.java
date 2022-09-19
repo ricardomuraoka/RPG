@@ -37,33 +37,9 @@ public class Test {
 
         goblin1.setPotion(new Potion("Small potion", 10));
 
-        System.out.println(hero1.getName() + " versus " + goblin1.getName());
-
 
         //BATALHA ATE A MORTE
         //QUEREMOS SANGUE!!!!
-        while (hero1.isAlive() && goblin1.isAlive()) {
-            if (hero1.isWeak() && hero1.hasPotion()) {
-                hero1.sip();
-                goblin1.attack(hero1);
-                System.out.println();
-            } else if (goblin1.isWeak() && goblin1.hasPotion()){
-                hero1.attack(goblin1);
-                if (goblin1.isAlive()) {
-                    goblin1.sip();
-                }
-                System.out.println();
-            } else {
-                hero1.attack(goblin1);
-                if (goblin1.isAlive()) {
-                    goblin1.attack(hero1);
-                }
-                System.out.println();
-            }
-        }
-
-        Char winner = hero1.isAlive() ? hero1 : goblin1;
-        System.out.printf("%s wins! Life: %d%n",
-                winner.getName(), winner.getLife());
+        Party.rodada(heroParty, monsterParty);
     }
 }

@@ -58,7 +58,7 @@ public class Char {
 
     public static Char createHero() {
         String name =
-                "Sir " +DiceRoll.roll("Azreal", "Ascamore", "tLancelot", "Tristan");
+                "Sir " +DiceRoll.roll("Azreal", "Ascamore", "Lancelot", "Tristan");
         int skill = new DiceRoll(1, 10, 5).roll();
         int defense = new DiceRoll(1, 8, 3).roll();
         int life = new DiceRoll(2, 10, 50).roll();
