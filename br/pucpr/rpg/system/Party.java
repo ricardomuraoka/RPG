@@ -4,9 +4,11 @@ import java.util.*;
 
 public class Party {
     List<Char> members = new ArrayList<>();
+    private String partyName;
 
-    public void addMember(Char c) {
-        members.add(c);
+    public Party(String partyName, List<Char> members) {
+        this.members = members;
+        this.partyName = partyName;
     }
 
     public static void rodada(Party p1, Party p2) {
@@ -57,35 +59,37 @@ public class Party {
             }
         }
     }
-    /*
-            while (hero.isAlive() && monster.isAlive()) {
-            if (hero.isWeak() && hero.hasPotion()) {
-                hero.sip();
-                monster.attack(hero);
-                System.out.println();
-            } else if (monster.isWeak() && monster.hasPotion()){
-                hero.attack(monster);
-                if (monster.isAlive()) {
-                    monster.sip();
-                }
-                System.out.println();
-            } else {
-                hero.attack(monster);
-                if (monster.isAlive()) {
-                    monster.attack(hero);
-                }
-                System.out.println();
+    public boolean partyIsAlive() {
+        List<Char> party = getMembers();
+        int i = 0;
+        boolean isAlive = false;
+        for (Char c: party) {
+            if (c.isAlive()) {
+                i++;
             }
         }
-     */
+        if (i > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+
+    public void addMember(Char c) {
+        members.add(c);
+    }
+
+    public String getPartyName() {
+        return partyName;
+    }
+
 
     public List<Char> getMembers() {
         return members;
     }
 
-    public void setMembers(List<Char> members) {
-        this.members = members;
-    }
 }
 
 
